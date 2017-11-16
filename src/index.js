@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import cacheManager from 'cache-manager';
-import redisStore from 'cache-manager-ioredis';
+const _ = require('lodash');
+const cacheManager = require('cache-manager');
+const redisStore = require('cache-manager-ioredis');
 
 const redisUrl = process.env.REDIS_TEST_URL || process.env.REDIS_URL || `redis://:@localhost:6379`;
 const parts = redisUrl.split(':');
