@@ -27,4 +27,16 @@ sakaarCacheClient.on('error', (error) => {
     console.error(error);
 });
 
-exports.sakaarCache = sakaarCache;
+
+exports.sakaar = {
+    fetch(key, execution, options = { ttl: 5 }) {
+        // sakaarCache.wrap(key, execution, { ttl: options.ttl });
+        return sakaarCache
+            .wrap(key, () => execution(), { ttl: options.ttl })
+            .then(console.log)
+            .catch((err) => {
+                console.error(err);
+            });
+    },
+};
+// exports.sakaarCache = sakaarCache;
