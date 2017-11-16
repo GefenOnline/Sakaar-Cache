@@ -20,12 +20,12 @@ if (_.size(passAndhost[0])) {
     redisConfig.password = passAndhost[0];
 }
 
-const gefenCache = cacheManager.caching(redisConfig);
+const sakaarCache = cacheManager.caching(redisConfig);
 
-const gefenCacheClient = gefenCache.store.getClient();
+const sakaarCacheClient = sakaarCache.store.getClient();
 
-gefenCacheClient.on('error', (error) => {
+sakaarCacheClient.on('error', (error) => {
     console.error(error);
 });
 
-export default gefenCache;
+export default sakaarCache;
