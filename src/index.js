@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const cacheManager = require('cache-manager');
 const redisStore = require('cache-manager-ioredis');
 
@@ -16,7 +15,7 @@ if (process.env.NODE_ENV === 'test') {
     redisConfig.db = 7;
 }
 
-if (_.size(passAndhost[0])) {
+if (passAndhost[0].length > 0) {
     redisConfig.password = passAndhost[0];
 }
 
@@ -28,4 +27,4 @@ sakaarCacheClient.on('error', (error) => {
     console.error(error);
 });
 
-export default sakaarCache;
+exports.sakaarCache = sakaarCache;

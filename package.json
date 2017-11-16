@@ -14,7 +14,6 @@
   "author": "Udi Mosayev <udi@sheerci.com>",
   "dependencies": {
     "cache-manager": "^2.5.0",
-    "cache-manager-ioredis": "^1.0.1",
-    "lodash": "^4.17.4"
+    "cache-manager-ioredis": "^1.0.1"
   }
 }
