@@ -30,9 +30,17 @@ sakaarCacheClient.on('error', (error) => {
 if (sakaarCache.wrap === undefined) {
     console.error("Can't find wrap function?");
 }
-exports.sakaar = {
-    fetch(key, execution, options = { ttl: 5 }) {
-        return sakaarCache.wrap(key, () => execution(), { ttl: options.ttl });
+
+module.exports = {
+    sakaar: {
+        udi: 1,
+        fetch(key, execution, options = { ttl: 5 }) {
+            return sakaarCache.wrap(key, () => {
+                console.log('No cache found.');
+                execution();
+            }, { ttl: options.ttl });
+        },
     },
 };
+
 // exports.sakaarCache = sakaarCache;
