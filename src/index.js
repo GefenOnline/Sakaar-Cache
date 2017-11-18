@@ -32,15 +32,10 @@ if (sakaarCache.wrap === undefined) {
 }
 
 module.exports = {
-    sakaar: {
-        udi: 1,
-        fetch(key, execution, options = { ttl: 5 }) {
-            return sakaarCache.wrap(key, () => {
-                console.log('No cache found.');
-                execution();
-            }, { ttl: options.ttl });
-        },
-    },
+    fetch: (key, execution, options = { ttl: 5 }) => sakaarCache.wrap(key, () => {
+        console.log('No cache found.');
+        execution();
+    }, { ttl: options.ttl }),
 };
 
-// exports.sakaarCache = sakaarCache;
+return module.exports;
