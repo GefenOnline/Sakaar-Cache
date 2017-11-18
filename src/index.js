@@ -27,16 +27,12 @@ sakaarCacheClient.on('error', (error) => {
     console.error(error);
 });
 
-
+if (sakaarCache.wrap === undefined) {
+    console.error("Can't find wrap function?");
+}
 exports.sakaar = {
     fetch(key, execution, options = { ttl: 5 }) {
-        // sakaarCache.wrap(key, execution, { ttl: options.ttl });
-        return sakaarCache
-            .wrap(key, () => execution(), { ttl: options.ttl })
-            .then(console.log)
-            .catch((err) => {
-                console.error(err);
-            });
+        return sakaarCache.wrap(key, () => execution(), { ttl: options.ttl });
     },
 };
 // exports.sakaarCache = sakaarCache;
