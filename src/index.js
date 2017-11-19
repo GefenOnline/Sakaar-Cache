@@ -9,6 +9,7 @@ const redisConfig = {
     store: redisStore,
     host: passAndhost[1],
     port: parseInt(parts[3], 10),
+    ttl: 600,
 };
 
 if (process.env.NODE_ENV === 'test') {
@@ -32,10 +33,12 @@ if (sakaarCache.wrap === undefined) {
 }
 
 module.exports = {
-    fetch: (key, execution, options = { ttl: 5 }) => sakaarCache.wrap(key, () => {
-        console.log('No cache found.');
+    fetch: (key, execution, options = { ttl: 30 }) => sakaarCache.wrap(key, () => {
+        console.log(` -------------- No cache found for ${key}, running: `);
+        console.log(execution);
+        console.log('------------------------------------ ');
         return execution();
-    }, { ttl: options.ttl }),
+    }, { ttl: 30 }),
 };
 
 return module.exports;
