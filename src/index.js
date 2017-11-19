@@ -34,7 +34,7 @@ if (sakaarCache.wrap === undefined) {
 module.exports = {
     fetch: (key, execution, options = { ttl: 5 }) => sakaarCache.wrap(key, () => {
         console.log('No cache found.');
-        execution();
+        return execution();
     }, { ttl: options.ttl }),
 };
 
