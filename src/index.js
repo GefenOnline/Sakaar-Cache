@@ -37,9 +37,7 @@ if (sakaarCache.wrap === undefined) {
 }
 
 module.exports = {
-    fetch: (key, execution, options = { ttl: 30 }) => {
-        sakaarCache.wrap(key, () => execution(), { ttl: ttlMsToSeconds(options.ttl) });
-    },
+    fetch: (key, exec, options = { ttl: 30 }) => sakaarCache.wrap(key, () => exec(), { ttl: ttlMsToSeconds(options.ttl) }),
 };
 
 return module.exports;
