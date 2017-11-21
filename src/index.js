@@ -12,6 +12,10 @@ const redisConfig = {
     ttl: 600,
 };
 
+function ttlMsToSeconds(ttl) {
+    return Math.floor((ttl / 1000) % 60);
+}
+
 if (process.env.NODE_ENV === 'test') {
     redisConfig.db = 7;
 }
@@ -33,12 +37,9 @@ if (sakaarCache.wrap === undefined) {
 }
 
 module.exports = {
-    fetch: (key, execution, options = { ttl: 30 }) => sakaarCache.wrap(key, () => {
-        console.log(` -------------- No cache found for ${key}, running: `);
-        console.log(execution);
-        console.log('------------------------------------ ');
-        return execution();
-    }, { ttl: 30 }),
+    fetch: (key, execution, options = { ttl: 30 }) => {
+        sakaarCache.wrap(key, () => execution(), { ttl: ttlMsToSeconds(options.ttl) });
+    },
 };
 
 return module.exports;
