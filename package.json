@@ -1,15 +1,15 @@
 {
   "name": "sakaar-cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A caching of Cache Manager for Gefen",
   "main": "src/index.js",
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "cache",
     "node",
-    "gefen"
   ],
   "author": "Udi Mosayev <udi@sheerci.com>",
   "dependencies": {
