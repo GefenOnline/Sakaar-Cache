@@ -9,7 +9,7 @@
   },
   "keywords": [
     "cache",
-    "node",
+    "node"
   ],
   "author": "Udi Mosayev <udi@sheerci.com>",
   "dependencies": {
