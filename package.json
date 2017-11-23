@@ -1,6 +1,6 @@
 {
   "name": "sakaar-cache",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A caching of Cache Manager for Gefen",
   "main": "src/index.js",
   "license": "MIT",
