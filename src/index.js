@@ -13,7 +13,7 @@ const redisConfig = {
 };
 
 function ttlMsToSeconds(ttl) {
-    return Math.floor((ttl / 1000) % 60);
+    return Math.floor((ttl / 1000));
 }
 
 if (process.env.NODE_ENV === 'test') {
