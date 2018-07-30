@@ -1,6 +1,5 @@
 const cacheManager = require('cache-manager');
 const redisStore = require('cache-manager-ioredis');
-
 const redisUrl = process.env.REDIS_TEST_URL || process.env.REDIS_URL || `redis://:@localhost:6379`;
 const parts = redisUrl.split(':');
 const passAndhost = parts[2].split('@');
@@ -37,7 +36,7 @@ if (sakaarCache.wrap === undefined) {
 }
 
 module.exports = {
-    fetch: (key, exec, options = { ttl: 30 }) => sakaarCache.wrap(key, () => exec(), { ttl: ttlMsToSeconds(options.ttl) }),
+    fetch: (key, exec, options = { ttl: 30000 }) => sakaarCache.wrap(key, () => exec(), { ttl: ttlMsToSeconds(options.ttl) }),
 };
 
 return module.exports;
